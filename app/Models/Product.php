@@ -73,5 +73,5 @@ class Product extends Model
     public function setUpdatedAt($updatedAt)
     {
         $this->attributes['updated_at'] = $updatedAt;
-    }                                                       
+    }
 }

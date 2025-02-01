@@ -14,27 +14,26 @@ class ProductController extends Controller
 //     ["id"=>"3", "name"=>"Chromecast", "description"=>"Best Chromecast", "image" => "submarine.png", "price"=>"30"],
 //     ["id"=>"4", "name"=>"Glasses", "description"=>"Best Glasses", "image" => "game.png", "price"=>"100"]
 //     ];
-  public function index()
+    public function index()
     {
-    $viewData = [];
-    $viewData["title"] = "Products - Online Store";
-    $viewData["subtitle"] = "List of products";
-    //$viewData["products"] = ProductController::$products;
-    $viewData["products"] = Product::all();
-    return view('product.index')->with("viewData", $viewData);
+        $viewData = [];
+        $viewData["title"] = "Products - Online Store";
+        $viewData["subtitle"] = "List of products";
+      //$viewData["products"] = ProductController::$products;
+        $viewData["products"] = Product::all();
+        return view('product.index')->with("viewData", $viewData);
     }
     public function show($id)
     {
-    $viewData = [];
+        $viewData = [];
     //$product = ProductController::$products[$id-1];
-    $product = Product::findOrFail($id);
+        $product = Product::findOrFail($id);
 
     // $viewData["title"] = $product["name"]." - Online Store";
     // $viewData["subtitle"] = $product["name"]." - Product information";
-    $viewData["title"] = $product->getName()." - Online Store";
-    $viewData["subtitle"] = $product->getName()." - Product information";
-    $viewData["product"] = $product;
-    return view('product.show')->with("viewData", $viewData);
+        $viewData["title"] = $product->getName()." - Online Store";
+        $viewData["subtitle"] = $product->getName()." - Product information";
+        $viewData["product"] = $product;
+        return view('product.show')->with("viewData", $viewData);
     }
-    
 }
