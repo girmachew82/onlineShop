@@ -34,7 +34,7 @@ class Product extends Model
         "price" => "required|numeric|gt:0",
         'image' => 'image',
         ]);
-    }
+        }
 
     
     public function getId()
