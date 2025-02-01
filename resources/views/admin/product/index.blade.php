@@ -62,7 +62,7 @@ Manage Products
 <table class="table table-bordered table-striped">
 <thead>
 <tr>
-<th scope="col">ID</th>
+<th scope="col">No</th>
 <th scope="col">Name</th>
 <th scope="col">Edit</th>
 <th scope="col">Delete</th>
@@ -71,10 +71,22 @@ Manage Products
 <tbody>
 @foreach ($viewData["products"] as $product)
 <tr>
-<td>{{ $product->getId() }}</td>
+<td>{{ $no++ }}</td>
 <td>{{ $product->getName() }}</td>
-<td>Edit</td>
-<td>Delete</td>
+<td>    
+        <a class="btn btn-primary" href="{{route('admin.product.edit', ['id'=> $product->getId()])}}">
+         <i class="bi-pencil"></i>
+        </a>
+</td>
+<td>
+<form action="{{ route('admin.product.delete', $product->getId())}}" method="POST">
+@csrf
+@method('DELETE')
+<button class="btn btn-danger btn-sm">
+<i class="bi-trash"></i>
+</button>
+</form>
+</td>
 </tr>
 @endforeach
 </tbody>
